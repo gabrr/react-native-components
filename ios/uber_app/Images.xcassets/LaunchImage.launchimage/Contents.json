@@ -2,6 +2,7 @@
   "images" : [
     {
       "extent" : "full-screen",
+      "filename" : "gabrr-lauching.png",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
@@ -11,6 +12,7 @@
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
+      "filename" : "gabrr-lauching.png",
       "minimum-system-version" : "12.0",
       "orientation" : "landscape",
       "scale" : "3x",
@@ -28,6 +30,7 @@
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
+      "filename" : "gabrr-lauching.png",
       "minimum-system-version" : "12.0",
       "orientation" : "landscape",
       "scale" : "2x",
@@ -36,6 +39,7 @@
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
+      "filename" : "gabrr-lauching.png",
       "minimum-system-version" : "11.0",
       "orientation" : "portrait",
       "scale" : "3x",
@@ -47,6 +51,7 @@
       "minimum-system-version" : "11.0",
       "orientation" : "landscape",
       "scale" : "3x",
+      "filename" : "gabrr-lauching.png",
       "subtype" : "2436h"
     },
     {
@@ -55,6 +60,7 @@
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "scale" : "3x",
+      "filename" : "gabrr-lauching.png",
       "subtype" : "736h"
     },
     {
@@ -63,6 +69,7 @@
       "minimum-system-version" : "8.0",
       "orientation" : "landscape",
       "scale" : "3x",
+      "filename" : "gabrr-lauching.png",
       "subtype" : "736h"
     },
     {
@@ -71,11 +78,13 @@
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "scale" : "2x",
+      "filename" : "gabrr-lauching.png",
       "subtype" : "667h"
     },
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
+      "filename" : "gabrr-lauching.png",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
       "scale" : "2x"
@@ -83,6 +92,7 @@
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
+      "filename" : "gabrr-lauching.png",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
       "scale" : "2x",
@@ -91,12 +101,14 @@
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
+      "filename" : "gabrr-lauching.png",
       "orientation" : "portrait",
       "scale" : "1x"
     },
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
+      "filename" : "gabrr-lauching.png",
       "orientation" : "portrait",
       "scale" : "2x"
     },
@@ -105,6 +117,7 @@
       "idiom" : "iphone",
       "orientation" : "portrait",
       "scale" : "2x",
+      "filename" : "gabrr-lauching.png",
       "subtype" : "retina4"
     }
   ],
