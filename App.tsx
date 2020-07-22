@@ -1,9 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, StatusBar, ScrollView } from 'react-native'
 
+interface Data {
+  labels: string[],
+  values: string[]
+}
+
+export const data: Data = {
+  labels: [
+      'Jan',
+      'Fev',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+  ],
+  values: [
+      '99%',
+      '70%',
+      '33%',
+      '78%',
+      '56%',
+      '90%',
+      '70%',
+      '67%',
+      '33%',
+      '78%',
+      '56%',
+      '87%'
+  ]
+}
 
 
-const Card = () => (
+const Card = () => {
+  const barsCount = data.values.map(() => false)
+  const [barsIndexes, setbarsIndexes] = useState(barsCount)
+
+  const displayShower = (index: number) => {
+    let newBarsIndexes = [...barsCount]
+    newBarsIndexes.splice(index, 1, !barsIndexes[index])
+    return setbarsIndexes(newBarsIndexes)
+  }
+
+  // colors of the bars
+  const accent = '#131aa8'
+  const normal = '#1f29ff'
+
+  return (
   <View style={styles.card}>
     <Text style={styles.title} >Recargas <Text style={{fontSize: 14, color: 'red'}} >Qtd.</Text></Text>
     <View style={styles.bottomLine}>
@@ -16,34 +65,23 @@ const Card = () => (
       <Text style={{bottom: '72%', ...styles.yLabel}}>75</Text>
       <Text style={{bottom: '97%', ...styles.yLabel}}>100</Text>
     </View>
+
     <View style={styles.xLabelContainer}>
-      <Text style={{...styles.xLabel}}>Jan</Text>
-      <Text style={{ ...styles.xLabel}}>Fev</Text>
-      <Text style={{ ...styles.xLabel}}>Mar</Text>
-      <Text style={{ ...styles.xLabel}}>Apr</Text>
-      <Text style={{ ...styles.xLabel}}>May</Text>
-      <Text style={{ ...styles.xLabel}}>Jun</Text>
-      <Text style={{ ...styles.xLabel}}>Jul</Text>
-      <Text style={{ ...styles.xLabel}}>Aug</Text>
-      <Text style={{ ...styles.xLabel}}>Sep</Text>
-      <Text style={{ ...styles.xLabel}}>Oct</Text>
-      <Text style={{ ...styles.xLabel}}>Nov</Text>
-      <Text style={{ ...styles.xLabel}}>Dec</Text>
+      {data.labels.map((label, index) => (
+          <Text key={index} style={{...styles.xLabel}}>{label}</Text>
+      ))}
     </View>
+
     <View style={styles.barsContainer}>
-      <View style={{height: '100%', ...styles.chartBar}} ></View>
-      <View style={{height: '70%', ...styles.chartBar}}></View>
-      <View style={{height: '67%', ...styles.chartBar}}></View>
-      <View style={{height: '33%', ...styles.chartBar}}></View>
-      <View style={{height: '78%', ...styles.chartBar}}></View>
-      <View style={{height: '56%', ...styles.chartBar}}></View>
-      <View style={{height: '90%', ...styles.chartBar}}></View>
-      <View style={{height: '70%', ...styles.chartBar}}></View>
-      <View style={{height: '67%', ...styles.chartBar}}></View>
-      <View style={{height: '33%', ...styles.chartBar}}></View>
-      <View style={{height: '78%', ...styles.chartBar}}></View>
-      <View style={{height: '56%', ...styles.chartBar}}></View>
+      {data.values.map((value, index) => (
+        <View key={index} style={{height: value, backgroundColor: barsIndexes[index] ? accent : normal,...styles.chartBar}} onTouchStart={() => displayShower(index)} >
+          <View style={{opacity: barsIndexes[index] ? 1 : 0, bottom: '101%', left: -15, ...styles.viewer}}>
+            <Text style={styles.viewerText}>{value}</Text>
+          </View>
+        </View>
+      ))}
     </View>
+    
     <View style={styles.gridsContainer}>
       <View style={{bottom: '25%', ...styles.grid}}></View>
       <View style={{bottom: '50%', ...styles.grid}}></View>
@@ -51,7 +89,7 @@ const Card = () => (
       <View style={{bottom: '100%', ...styles.grid}}></View>
     </View>
   </View>
-)
+)}
 
 
 const App = () => {
@@ -61,7 +99,6 @@ const App = () => {
       <ScrollView style={styles.scrollContainer} >
         <Card/>
       </ScrollView>
-
     </SafeAreaView>
   )
 }
@@ -100,7 +137,7 @@ const styles = StyleSheet.create({
     width: '88%',
     backgroundColor: '#999',
     position: 'absolute',
-    bottom: 40,
+    bottom: 41,
     marginLeft: '8%'
   },
   leftLine: {
@@ -112,10 +149,9 @@ const styles = StyleSheet.create({
     // bottom: 40,
   },
   chartBar: {
-    backgroundColor: '#413fe8',
     width: 15,
     borderTopLeftRadius: 4,
-    borderTopRightRadius: 4,
+    borderTopRightRadius: 4 
   },
   barsContainer: {
     height: '65%',
@@ -174,6 +210,23 @@ const styles = StyleSheet.create({
     height: 1,
     width: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.1)'
+  },
+  viewer: {
+    width: 50,
+    height: 30,
+    position: 'absolute',
+    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    borderRadius: 4,
+    zIndex: 2,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+    borderWidth: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  viewerText: {
+    color: '#444',
+    fontSize: 12,
   }
 })
 
